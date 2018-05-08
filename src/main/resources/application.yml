@@ -1,0 +1,35 @@
+server:
+  port: 9091
+  
+logging:
+  config: classpath:logback-spring.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.16.4.51:13306/test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+    hibernate: 
+      naming: 
+        physical-strategy: cn.nriet.framework.util.MySQLUpperCaseStrategy
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: utf-8
+    content-type: text/html
+  rabbitmq:
+    host: 172.16.50.224
+    username: admin
+    password: 123456
+    virtualhost: /
+    queues: 
+     - queueName: test1
+       maxConsumer: 5
+       priority: 2
+     - queueName: test2
+       maxConsumer: 1
+       priority: 1
+    
